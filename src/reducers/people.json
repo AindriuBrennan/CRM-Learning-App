@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "firstName": "Andrew",
+    "lastName": "Brennan",
+    "phone": "1800-test",
+    "company": "Red Hat",
+    "project": "CRM project",
+    "notes": "this is a learning project"
+  },
+  {
+    "id": 2,
+    "firstName": "Summers",
+    "lastName": "Pittman",
+    "phone": "2800-test",
+    "company": "Red Hat",
+    "project": "CRM project",
+    "notes": "this is a learning project"
+  },
+  {
+    "id": 3,
+    "firstName": "Massimo",
+    "lastName": "Ziccardi",
+    "phone": "3800-test",
+    "company": "Red Hat",
+    "project": "CRM project",
+    "notes": "this is a learning project"
+  }
+]
