@@ -23,21 +23,17 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-class AddPerson extends Component {
+class UpdatePerson extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name={'plus'} size={50} color={tintColor} />
     )
   }
 
-  onAddPress() {
-    const { firstName, lastName, phone, email, company, project, notes } = this.props;
+  onUpdatePress() {
+    const { firstName, lastName, phone, email, company, project, notes, _id } = this.props;
 
-    this.props.createNewContact({ firstName, lastName, phone, email, company, project, notes });
-
-    this.props.navigation.navigate('People');
+    this.props.saveContact({ firstName, lastName, phone, email, company, project, notes, _id });
   }
 
   render() {
@@ -96,9 +92,8 @@ class AddPerson extends Component {
           />
           <View>
             <Button
-              title='Add'
-              onPress={this.onAddPress.bind(this)} />
-
+              title='Update'
+              onPress={this.onUpdatePress.bind(this)} />
           </View>
         </View>
       </ScrollView>
@@ -107,8 +102,8 @@ class AddPerson extends Component {
 }
 
 const mapStateToProps = state => {
-  const { firstName, lastName, phone, email, company, project, notes } = state;
-  return { firstName, lastName, phone, email, company, project, notes };
+  const { firstName, lastName, phone, email, company, project, notes, _id } = state;
+  return { firstName, lastName, phone, email, company, project, notes, _id };
 }
 
-export default connect(mapStateToProps, actions)(AddPerson);
+export default connect(mapStateToProps, actions)(UpdatePerson);

@@ -44,3 +44,58 @@ export const createNewContact = ({ firstName, lastName, phone, email, company, p
       .catch(error => console.log(error))
   };
 };
+
+export const loadInitialContacts = () => {
+  return (dispatch) => {
+    fetch('http://192.168.1.180:3000/contact')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        dispatch({ type: 'INITIAL_FETCH', payload: data })
+      })
+      .catch(error => console.log(error))
+  };
+};
+
+export const deleteContact = (id) => {
+  return (dispatch) => {
+    fetch(`http://192.168.1.180:3000/contact/${id}`, { method: "DELETE" })
+      .then(() => {
+        dispatch({ type: 'DELETE_CONTACT' });
+      })
+  }
+}
+
+export const updateContact = (person) => {
+  return {
+    type: 'UPDATE_CONTACT',
+    payload: person,
+  }
+}
+
+export const saveContact = ({ firstName, lastName, phone, email, company, project, notes, _id }) => {
+  return (dispatch) => {
+    fetch(`http://192.168.1.180:3000/contact/${_id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        "firstName": firstName,
+        "lastName": lastName,
+        "phone": phone,
+        "email": email,
+        "company": company,
+        "project": project,
+        "notes": notes,
+      }),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => console.log(response))
+      .then(() => {
+        dispatch({ type: 'SAVE_CONTACT' });
+      })
+      .catch(error => console.log(error))
+  };
+}
