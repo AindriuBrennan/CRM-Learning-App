@@ -1,0 +1,3 @@
+This is a demo application created for gaining an initial understanding of React Native.
+It contains some simple CRUD functionality and connects to a MongoDB backend.
+Other technologies used in this application include Redux and Lodash
